@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TR Bouquet - Merangkai Momen Indah Anda</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind Config for Custom Colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        rose: {
+                            50: '#fdf2f5',
+                            100: '#f8e8ee',
+                            200: '#f1d1dc',
+                            300: '#e5aebf',
+                            400: '#e0829d',
+                            500: '#c85374',
+                            600: '#ab3a5a',
+                            700: '#8e2d47',
+                            800: '#75283e',
+                            900: '#632537',
+                        },
+                        cream: '#FAF7F2',
+                        gold: '#D4AF37',
+                        charcoal: '#2D2727'
+                    },
+                    fontFamily: {
+                        playfair: ['Playfair Display', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..800;1,400..800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FAF7F2;
+            color: #2D2727;
+        }
+        .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+        .glass-nav {
+            background: rgba(250, 247, 242, 0.85);
+            backdrop-filter: blur(12px);
+        }
+        /* Hide Scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+</head>
+<body class="bg-cream text-charcoal flex flex-col min-h-screen">
+
+    <!-- NAVIGATION BAR -->
+    <header class="sticky top-0 z-40 glass-nav border-b border-rose-100 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="w-10 h-10 rounded-full bg-rose-400 text-white flex items-center justify-center font-playfair font-bold text-xl shadow-md group-hover:scale-105 transition-transform">
+                    TR
+                </div>
+                <div>
+                    <span class="font-playfair text-xl sm:text-2xl font-bold tracking-tight text-rose-900 block leading-none">TR Bouquet</span>
+                    <span class="text-[10px] tracking-widest text-rose-500 uppercase font-semibold">Florist & Gift Shop</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-charcoal/80">
+                <a href="#home" class="hover:text-rose-500 transition-colors">Beranda</a>
+                <a href="#features" class="hover:text-rose-500 transition-colors">Keunggulan</a>
+                <a href="#katalog" class="hover:text-rose-500 transition-colors">Katalog</a>
+                <a href="#custom-builder" class="hover:text-rose-500 transition-colors">Custom Bouquet</a>
+                <a href="#testimoni" class="hover:text-rose-500 transition-colors">Testimoni</a>
+                <a href="#faq" class="hover:text-rose-500 transition-colors">FAQ</a>
+            </nav>
+
+            <!-- Action Buttons & Cart -->
+            <div class="flex items-center gap-3">
+                <button id="cartBtn" onclick="openCartModal()" class="relative p-2.5 rounded-full bg-rose-100 text-rose-700 hover:bg-rose-200 transition-all">
+                    <i class="fa-solid fa-shopping-bag text-lg"></i>
+                    <span id="cartCount" class="absolute -top-1 -right-1 bg-rose-500 text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center shadow">0</span>
+                </button>
+                <a href="https://wa.me/6281234567890?text=Halo%20TR%20Bouquet,%20saya%20ingin%20bertanya%20mengenai%20produk%20bouquet" target="_blank" class="hidden sm:flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2.5 rounded-full font-medium text-xs sm:text-sm shadow-md transition-all hover:shadow-lg">
+                    <i class="fa-brands fa-whatsapp text-base"></i>
+                    <span>Chat WA</span>
+                </a>
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg text-charcoal hover:bg-rose-100">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden bg-cream/95 border-b border-rose-100 px-4 pt-2 pb-6 space-y-3">
+            <a href="#home" onclick="toggleMobileMenu()" class="block py-2 text-charcoal font-medium hover:text-rose-500">Beranda</a>
+            <a href="#features" onclick="toggleMobileMenu()" class="block py-2 text-charcoal font-medium hover:text-rose-500">Keunggulan</a>
+            <a href="#katalog" onclick="toggleMobileMenu()" class="block py-2 text-charcoal font-medium hover:text-rose-500">Katalog Produk</a>
+            <a href="#custom-builder" onclick="toggleMobileMenu()" class="block py-2 text-charcoal font-medium hover:text-rose-500">Custom Bouquet Builder</a>
+            <a href="#testimoni" onclick="toggleMobileMenu()" class="block py-2 text-charcoal font-medium hover:text-rose-500">Testimoni Pelanggan</a>
+            <a href="#faq" onclick="toggleMobileMenu()" class="block py-2 text-charcoal font-medium hover:text-rose-500">FAQ & Kontak</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="relative min-h-[85vh] flex items-center pt-8 pb-16 overflow-hidden">
+        <div class="absolute inset-0 z-0 opacity-20 pointer-events-none">
+            <div class="absolute -top-20 -left-20 w-96 h-96 bg-rose-300 rounded-full blur-3xl"></div>
+            <div class="absolute top-1/2 -right-20 w-80 h-80 bg-gold/30 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-rose-100 border border-rose-200 text-rose-700 text-xs font-semibold uppercase tracking-wider">
+                        <i class="fa-solid fa-sparkles text-rose-400"></i> Premium Craft & Gift Florist UMKM
+                    </div>
+                    <h1 class="font-playfair text-4xl sm:text-5xl md:text-6xl font-bold leading-tight text-rose-950">
+                        Merangkai <span class="italic text-rose-500 font-normal">Momen Indah</span> & Hadiah Penuh Makna
+                    </h1>
+                    <p class="text-charcoal/80 text-base sm:text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                        Spesialis bouquet bunga segar, artificial, money bouquet, snack, hingga custom gift box unik untuk wisuda, ulang tahun, anniversary & momen spesial Anda.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#katalog" class="w-full sm:w-auto px-8 py-4 bg-rose-400 hover:bg-rose-500 text-white font-semibold rounded-full shadow-lg shadow-rose-300/50 hover:shadow-xl hover:-translate-y-0.5 transition-all text-center">
+                            <i class="fa-solid fa-gift mr-2"></i> Lihat Katalog Produk
+                        </a>
+                        <a href="#custom-builder" class="w-full sm:w-auto px-8 py-4 bg-white hover:bg-rose-50 text-rose-600 font-semibold rounded-full border border-rose-200 shadow-sm hover:shadow transition-all text-center">
+                            <i class="fa-solid fa-wand-magic-sparkles mr-2"></i> Pesan Custom
+                        </a>
+                    </div>
+                    
+                    <!-- Quick Stats/Badges -->
+                    <div class="pt-8 border-t border-rose-200/60 grid grid-cols-3 gap-4 max-w-md mx-auto lg:mx-0">
+                        <div>
+                            <div class="font-playfair text-2xl sm:text-3xl font-bold text-rose-800">1.200+</div>
+                            <div class="text-xs text-charcoal/70 font-medium">Bouquet Terkirim</div>
+                        </div>
+                        <div>
+                            <div class="font-playfair text-2xl sm:text-3xl font-bold text-rose-800">4.9/5</div>
+                            <div class="text-xs text-charcoal/70 font-medium">Rating Pelanggan</div>
+                        </div>
+                        <div>
+                            <div class="font-playfair text-2xl sm:text-3xl font-bold text-rose-800">100%</div>
+                            <div class="text-xs text-charcoal/70 font-medium">Desain Custom</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Image Collage -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <div class="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-4 border-white aspect-[4/5] group">
+                            <img src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=800&q=80" alt="Bouquet Bunga Mawar TR Bouquet" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-6">
+                                <div class="text-white">
+                                    <span class="bg-rose-500 text-xs px-2 py-1 rounded text-white font-medium mb-2 inline-block">Best Seller</span>
+                                    <h3 class="font-playfair text-xl font-bold">Classic Rose Elegance</h3>
+                                    <p class="text-xs text-white/80">Kombinasi Mawar Merah Segar & Wrapping Modern</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Floating Badge 1 -->
+                        <div class="absolute -bottom-6 -left-6 z-20 bg-white/95 backdrop-blur-md p-4 rounded-xl shadow-xl border border-rose-100 flex items-center gap-3 animate-bounce-slow hidden sm:flex">
+                            <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-truck-fast text-lg"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-charcoal">Express / Same Day</p>
+                                <p class="text-[10px] text-charcoal/60">Siap Kirim Area Kota</p>
+                            </div>
+                        </div>
+
+                        <!-- Floating Badge 2 -->
+                        <div class="absolute -top-6 -right-6 z-20 bg-white/95 backdrop-blur-md p-4 rounded-xl shadow-xl border border-rose-100 flex items-center gap-3 hidden sm:flex">
+                            <div class="w-10 h-10 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-ribbon text-lg"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-charcoal">Gratis Kartu Ucapan</p>
+                                <p class="text-[10px] text-charcoal/60">Custom pesan kata-kata</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KEUNGGULAN / FEATURES SECTION -->
+    <section id="features" class="py-16 bg-white border-y border-rose-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <h2 class="text-xs font-bold text-rose-500 uppercase tracking-widest mb-2">Mengapa Memilih Kami</h2>
+                <p class="font-playfair text-3xl sm:text-4xl font-bold text-rose-950">Keunggulan Layanan TR Bouquet</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-cream/60 p-6 rounded-2xl border border-rose-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-rose-200 text-rose-700 flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-seedling"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-rose-900 mb-2">Bunga Segar & Durable</h3>
+                    <p class="text-sm text-charcoal/70 leading-relaxed">
+                        Dipilih langsung dari petani berkualitas, terjamin kesegarannya dan tahan lama untuk momen berharga Anda.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-cream/60 p-6 rounded-2xl border border-rose-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-rose-200 text-rose-700 flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-palette"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-rose-900 mb-2">Desain Estetik & Custom</h3>
+                    <p class="text-sm text-charcoal/70 leading-relaxed">
+                        Bebas pilih nuansa warna, tipe wrapping, hingga kombinasi snack/uang sesuai selera dan budget Anda.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-cream/60 p-6 rounded-2xl border border-rose-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-rose-200 text-rose-700 flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-rose-900 mb-2">Pengiriman Express</h3>
+                    <p class="text-sm text-charcoal/70 leading-relaxed">
+                        Layanan pengiriman Same-Day aman & cepat menggunakan armada khusus agar bouquet tiba tanpa cacat.
+                    </p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-cream/60 p-6 rounded-2xl border border-rose-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-rose-200 text-rose-700 flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-hand-holding-dollar"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-rose-900 mb-2">Harga Terjangkau UMKM</h3>
+                    <p class="text-sm text-charcoal/70 leading-relaxed">
+                        Kualitas bintang lima dengan harga bersahabat. Cocok untuk kantong mahasiswa & umum.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KATALOG PRODUK INTERAKTIF -->
+    <section id="katalog" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+                <div>
+                    <h2 class="text-xs font-bold text-rose-500 uppercase tracking-widest mb-2">Katalog Pilihan</h2>
+                    <p class="font-playfair text-3xl sm:text-4xl font-bold text-rose-950">Temukan Hadiah Sempurna</p>
+                </div>
+                <!-- Filter Category Buttons -->
+                <div class="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 no-scrollbar" id="filterContainer">
+                    <button onclick="filterProducts('all')" class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all whitespace-nowrap bg-rose-500 text-white shadow-md" data-category="all">
+                        Semua
+                    </button>
+                    <button onclick="filterProducts('fresh')" class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all whitespace-nowrap bg-white text-charcoal/80 hover:bg-rose-100 border border-rose-100" data-category="fresh">
+                        Bunga Segar
+                    </button>
+                    <button onclick="filterProducts('artificial')" class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all whitespace-nowrap bg-white text-charcoal/80 hover:bg-rose-100 border border-rose-100" data-category="artificial">
+                        Artificial / Dried
+                    </button>
+                    <button onclick="filterProducts('money')" class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all whitespace-nowrap bg-white text-charcoal/80 hover:bg-rose-100 border border-rose-100" data-category="money">
+                        Money Bouquet
+                    </button>
+                    <button onclick="filterProducts('snack')" class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all whitespace-nowrap bg-white text-charcoal/80 hover:bg-rose-100 border border-rose-100" data-category="snack">
+                        Snack Bouquet
+                    </button>
+                    <button onclick="filterProducts('giftbox')" class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all whitespace-nowrap bg-white text-charcoal/80 hover:bg-rose-100 border border-rose-100" data-category="giftbox">
+                        Gift Box & Graduation
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product Cards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="productGrid">
+                <!-- Dynamic Content Generated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CUSTOM BOUQUET BUILDER SECTION -->
+    <section id="custom-builder" class="py-20 bg-rose-50/50 border-y border-rose-100 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="px-3 py-1 bg-rose-200 text-rose-800 text-xs font-bold rounded-full uppercase tracking-wider">Interaktif Calculator</span>
+                <h2 class="font-playfair text-3xl sm:text-4xl font-bold text-rose-950 mt-3">Custom Bouquet Builder</h2>
+                <p class="text-charcoal/70 text-sm sm:text-base mt-2">
+                    Rancang bouquet unik Anda sendiri! Pilih jenis, warna, pernak-pernik, dan dapatkan estimasi harga instan.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 bg-white p-6 sm:p-10 rounded-3xl shadow-xl border border-rose-100">
+                <!-- Builder Form -->
+                <div class="lg:col-span-7 space-y-6">
+                    <!-- Step 1: Jenis Bouquet -->
+                    <div>
+                        <label class="block font-bold text-sm text-rose-900 mb-2">1. Pilih Jenis Bouquet</label>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                            <button type="button" onclick="selectBuilderOption('type', 'Fresh Flowers', 120000)" class="builder-type-btn p-3 rounded-xl border border-rose-200 text-left hover:border-rose-400 transition-all focus:outline-none" data-value="Fresh Flowers">
+                                <div class="font-bold text-sm text-rose-950">Bunga Segar</div>
+                                <div class="text-xs text-rose-500">Mulai Rp 120k</div>
+                            </button>
+                            <button type="button" onclick="selectBuilderOption('type', 'Artificial/Dried', 85000)" class="builder-type-btn p-3 rounded-xl border border-rose-200 text-left hover:border-rose-400 transition-all focus:outline-none" data-value="Artificial/Dried">
+                                <div class="font-bold text-sm text-rose-950">Artificial/Dried</div>
+                                <div class="text-xs text-rose-500">Mulai Rp 85k</div>
+                            </button>
+                            <button type="button" onclick="selectBuilderOption('type', 'Money Bouquet', 75000)" class="builder-type-btn p-3 rounded-xl border border-rose-200 text-left hover:border-rose-400 transition-all focus:outline-none" data-value="Money Bouquet">
+                                <div class="font-bold text-sm text-rose-950">Money Bouquet</div>
+                                <div class="text-xs text-rose-500">Jasa Rp 75k + Isi</div>
+                            </button>
+                            <button type="button" onclick="selectBuilderOption('type', 'Snack Bouquet', 65000)" class="builder-type-btn p-3 rounded-xl border border-rose-200 text-left hover:border-rose-400 transition-all focus:outline-none" data-value="Snack Bouquet">
+                                <div class="font-bold text-sm text-rose-950">Snack Bouquet</div>
+                                <div class="text-xs text-rose-500">Mulai Rp 65k</div>
+                            </button>
+                            <button type="button" onclick="selectBuilderOption('type', 'Gift Box Custom', 110000)" class="builder-type-btn p-3 rounded-xl border border-rose-200 text-left hover:border-rose-400 transition-all focus:outline-none" data-value="Gift Box Custom">
+                                <div class="font-bold text-sm text-rose-950">Gift Box</div>
+                                <div class="text-xs text-rose-500">Mulai Rp 110k</div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Nuansa Warna Wrapping -->
+                    <div>
+                        <label class="block font-bold text-sm text-rose-900 mb-2">2. Nuansa Warna Wrap & Pita</label>
+                        <div class="flex flex-wrap gap-3">
+                            <button type="button" onclick="selectBuilderOption('color', 'Soft Pink / Pastel', 0)" class="builder-color-btn px-4 py-2 rounded-lg border border-rose-200 text-xs font-semibold flex items-center gap-2 hover:bg-rose-50 transition-all">
+                                <span class="w-3 h-3 rounded-full bg-rose-300"></span> Soft Pink / Pastel
+                            </button>
+                            <button type="button" onclick="selectBuilderOption('color', 'Earthy & Cream', 0)" class="builder-color-btn px-4 py-2 rounded-lg border border-rose-200 text-xs font-semibold flex items-center gap-2 hover:bg-rose-50 transition-all">
+                                <span class="w-3 h-3 rounded-full bg-amber-200"></span> Earthy & Cream
+                            </button>
+                            <button type="button" onclick="selectBuilderOption('color', 'Bold Red / Maroon', 0)" class="builder-color-btn px-4 py-2 rounded-lg border border-rose-200 text-xs font-semibold flex items-center gap-2 hover:bg-rose-50 transition-all">
+                                <span class="w-3 h-3 rounded-full bg-red-600"></span> Bold Red
+                            </button>
+                            <button type="button" onclick="selectBuilderOption('color', 'Black & Gold', 10000)" class="builder-color-btn px-4 py-2 rounded-lg border border-rose-200 text-xs font-semibold flex items-center gap-2 hover:bg-rose-50 transition-all">
+                                <span class="w-3 h-3 rounded-full bg-stone-900"></span> Black & Gold (+10k)
+                            </button>
+                            <button type="button" onclick="selectBuilderOption('color', 'Lilac / Purple', 0)" class="builder-color-btn px-4 py-2 rounded-lg border border-rose-200 text-xs font-semibold flex items-center gap-2 hover:bg-rose-50 transition-all">
+                                <span class="w-3 h-3 rounded-full bg-purple-300"></span> Lilac
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Add-Ons / Tambahan -->
+                    <div>
+                        <label class="block font-bold text-sm text-rose-900 mb-2">3. Tambahan Aksesoris (Opsional)</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <label class="flex items-center gap-3 p-3 border border-rose-100 rounded-xl cursor-pointer hover:bg-rose-50/50">
+                                <input type="checkbox" onchange="toggleAddon('Boneka Wisuda/Mini', 25000, this.checked)" class="accent-rose-500 rounded">
+                                <div class="text-xs">
+                                    <div class="font-bold text-charcoal">Boneka Wisuda / Mini Teddy</div>
+                                    <div class="text-rose-500">+ Rp 25.000</div>
+                                </div>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border border-rose-100 rounded-xl cursor-pointer hover:bg-rose-50/50">
+                                <input type="checkbox" onchange="toggleAddon('Lampu LED Warm Light', 15000, this.checked)" class="accent-rose-500 rounded">
+                                <div class="text-xs">
+                                    <div class="font-bold text-charcoal">Lampu LED Peri (Warm Light)</div>
+                                    <div class="text-rose-500">+ Rp 15.000</div>
+                                </div>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border border-rose-100 rounded-xl cursor-pointer hover:bg-rose-50/50">
+                                <input type="checkbox" onchange="toggleAddon('Balon Custom Nama', 20000, this.checked)" class="accent-rose-500 rounded">
+                                <div class="text-xs">
+                                    <div class="font-bold text-charcoal">Balon Transparan + Custom Nama</div>
+                                    <div class="text-rose-500">+ Rp 20.000</div>
+                                </div>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border border-rose-100 rounded-xl cursor-pointer hover:bg-rose-50/50">
+                                <input type="checkbox" onchange="toggleAddon('Coklat Ferrero Rocher (3pcs)', 30000, this.checked)" class="accent-rose-500 rounded">
+                                <div class="text-xs">
+                                    <div class="font-bold text-charcoal">Coklat Ferrero Rocher (3pcs)</div>
+                                    <div class="text-rose-500">+ Rp 30.000</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Kartu Ucapan Custom -->
+                    <div>
+                        <label class="block font-bold text-sm text-rose-900 mb-2">4. Pesan Kartu Ucapan (Gratis)</label>
+                        <textarea id="builderGreeting" rows="3" placeholder="Tulis ucapan selamat, doa, atau pesan manis Anda di sini..." class="w-full p-3 border border-rose-200 rounded-xl text-xs focus:ring-2 focus:ring-rose-400 focus:outline-none bg-cream/30"></textarea>
+                    </div>
+                </div>
+
+                <!-- Builder Summary Card -->
+                <div class="lg:col-span-5 bg-cream/80 p-6 rounded-2xl border border-rose-200 flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-playfair text-xl font-bold text-rose-950 pb-3 border-b border-rose-200 flex items-center justify-between">
+                            <span>Ringkasan Custom</span>
+                            <i class="fa-solid fa-receipt text-rose-400 text-lg"></i>
+                        </h3>
+                        
+                        <div class="space-y-3 my-4 text-xs">
+                            <div class="flex justify-between">
+                                <span class="text-charcoal/70">Jenis Bouquet:</span>
+                                <span id="summaryType" class="font-bold text-rose-900">Belum dipilih</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-charcoal/70">Warna Wrap:</span>
+                                <span id="summaryColor" class="font-bold text-rose-900">Belum dipilih</span>
+                            </div>
+                            <div>
+                                <span class="text-charcoal/70 block mb-1">Tambahan Aksesoris:</span>
+                                <ul id="summaryAddons" class="list-disc pl-4 text-rose-900 font-medium space-y-1">
+                                    <li class="italic text-charcoal/50">Tidak ada</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-rose-200 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-charcoal">Perkiraan Total:</span>
+                            <span id="summaryTotal" class="font-playfair text-2xl font-bold text-rose-600">Rp 0</span>
+                        </div>
+                        <button onclick="sendCustomToWhatsApp()" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-md transition-all flex items-center justify-center gap-2 text-sm">
+                            <i class="fa-brands fa-whatsapp text-lg"></i> Kirim Pesanan ke WhatsApp
+                        </button>
+                        <p class="text-[10px] text-charcoal/60 text-center italic">*Harga akhir dapat menyesuaikan detail permintaan via chat WhatsApp.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONI & GALERI PELANGGAN -->
+    <section id="testimoni" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <h2 class="text-xs font-bold text-rose-500 uppercase tracking-widest mb-2">Kata Mereka</h2>
+                <p class="font-playfair text-3xl sm:text-4xl font-bold text-rose-950">Testimoni & Senyuman Pelanggan</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testi 1 -->
+                <div class="bg-white p-6 rounded-2xl border border-rose-100 shadow-sm relative hover:shadow-md transition-shadow">
+                    <div class="flex items-center gap-1 text-amber-400 mb-3 text-xs">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-xs text-charcoal/80 italic mb-6 leading-relaxed">
+                        "Pesan money bouquet untuk wisuda sahabatku. Wrapping-nya rapi banget dan bunganya seger pool! Seller-nya ramah banget diajak diskusi custom desain. Recommended!"
+                    </p>
+                    <div class="flex items-center gap-3 pt-4 border-t border-rose-50">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Siti Rahma" class="w-10 h-10 rounded-full object-cover">
+                        <div>
+                            <h4 class="font-bold text-sm text-rose-900">Siti Rahmawati</h4>
+                            <p class="text-[10px] text-charcoal/60">Pembeli Money Bouquet Wisuda</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testi 2 -->
+                <div class="bg-white p-6 rounded-2xl border border-rose-100 shadow-sm relative hover:shadow-md transition-shadow">
+                    <div class="flex items-center gap-1 text-amber-400 mb-3 text-xs">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-xs text-charcoal/80 italic mb-6 leading-relaxed">
+                        "Pesen dadakan pagi hari untuk anniversary, siang langsung dikirim pakai kurir instan. Pas sampai warnanya persis kayak di gambar. Pacar suka banget!"
+                    </p>
+                    <div class="flex items-center gap-3 pt-4 border-t border-rose-50">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Dimas Anggara" class="w-10 h-10 rounded-full object-cover">
+                        <div>
+                            <h4 class="font-bold text-sm text-rose-900">Dimas Pratama</h4>
+                            <p class="text-[10px] text-charcoal/60">Pembeli Fresh Red Rose</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testi 3 -->
+                <div class="bg-white p-6 rounded-2xl border border-rose-100 shadow-sm relative hover:shadow-md transition-shadow">
+                    <div class="flex items-center gap-1 text-amber-400 mb-3 text-xs">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-xs text-charcoal/80 italic mb-6 leading-relaxed">
+                        "Gift box graduation-nya estetik parah! Ada lampu LED-nya juga jadi pas malam keliatan makin mewah padahal harganya terjangkau banget. Sukses terus TR Bouquet!"
+                    </p>
+                    <div class="flex items-center gap-3 pt-4 border-t border-rose-50">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80" alt="Nadia" class="w-10 h-10 rounded-full object-cover">
+                        <div>
+                            <h4 class="font-bold text-sm text-rose-900">Nadia Putri</h4>
+                            <p class="text-[10px] text-charcoal/60">Pembeli Graduation Gift Box</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ & FOOTER SECTION -->
+    <footer id="faq" class="bg-rose-950 text-white pt-16 pb-8 border-t border-rose-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-12 border-b border-rose-900/80">
+                <!-- Brand Info -->
+                <div class="lg:col-span-4 space-y-4">
+                    <div class="flex items-center gap-2">
+                        <div class="w-10 h-10 rounded-full bg-rose-400 text-white flex items-center justify-center font-playfair font-bold text-xl shadow-md">
+                            TR
+                        </div>
+                        <span class="font-playfair text-2xl font-bold tracking-tight text-rose-100">TR Bouquet</span>
+                    </div>
+                    <p class="text-xs text-rose-200/80 leading-relaxed">
+                        Usaha kreatif UMKM penyedia bouquet bunga segar, artificial, money bouquet, & gift box berkualitas dengan sentuhan desain estetik & harga bersahabat.
+                    </p>
+                    <div class="flex items-center gap-3 pt-2">
+                        <a href="https://instagram.com" target="_blank" class="w-8 h-8 rounded-full bg-rose-900 hover:bg-rose-500 flex items-center justify-center text-xs transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://tiktok.com" target="_blank" class="w-8 h-8 rounded-full bg-rose-900 hover:bg-rose-500 flex items-center justify-center text-xs transition-colors"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="https://wa.me/6281234567890" target="_blank" class="w-8 h-8 rounded-full bg-rose-900 hover:bg-emerald-600 flex items-center justify-center text-xs transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <!-- Fast FAQ -->
+                <div class="lg:col-span-5 space-y-3">
+                    <h3 class="font-playfair font-bold text-lg text-rose-100 mb-2">Pertanyaan Sering Diajukan (FAQ)</h3>
+                    
+                    <details class="bg-rose-900/40 rounded-xl p-3 border border-rose-800/60 text-xs">
+                        <summary class="font-bold cursor-pointer text-rose-200 hover:text-white">Berapa lama proses pembuatan bouquet?</summary>
+                        <p class="mt-2 text-rose-300/80">Untuk produk ready stock/standar 1-3 jam. Untuk pesanan custom khusus disarankan pemesanan H-1 atau H-2.</p>
+                    </details>
+
+                    <details class="bg-rose-900/40 rounded-xl p-3 border border-rose-800/60 text-xs">
+                        <summary class="font-bold cursor-pointer text-rose-200 hover:text-white">Bagaimana metode pengiriman yang tersedia?</summary>
+                        <p class="mt-2 text-rose-300/80">Kami melayani pengiriman via Ojek Online (GoSend/GrabExpress) untuk area dalam kota, atau ambil langsung ke galeri UMKM kami.</p>
+                    </details>
+
+                    <details class="bg-rose-900/40 rounded-xl p-3 border border-rose-800/60 text-xs">
+                        <summary class="font-bold cursor-pointer text-rose-200 hover:text-white">Apakah Money Bouquet aman?</summary>
+                        <p class="mt-2 text-rose-300/80">Sangat aman! Uang dilapisi plastik pelindung khusus tanpa di-hekter/di-lem langsung, sehingga uang tidak rusak sama sekali.</p>
+                    </details>
+                </div>
+
+                <!-- Kontak & Lokasi -->
+                <div class="lg:col-span-3 space-y-3 text-xs">
+                    <h3 class="font-playfair font-bold text-lg text-rose-100 mb-2">Lokasi & Kontak</h3>
+                    <p class="flex items-start gap-2 text-rose-200/80">
+                        <i class="fa-solid fa-location-dot text-rose-400 mt-0.5"></i>
+                        <span>Jl. Bunga Melati No. 45, Kecamatan Sukajadi, Kota Bandung, Jawa Barat</span>
+                    </p>
+                    <p class="flex items-center gap-2 text-rose-200/80">
+                        <i class="fa-solid fa-clock text-rose-400"></i>
+                        <span>Buka Setiap Hari: 08.00 - 20.00 WIB</span>
+                    </p>
+                    <p class="flex items-center gap-2 text-rose-200/80">
+                        <i class="fa-brands fa-whatsapp text-rose-400 text-sm"></i>
+                        <span>0812-3456-7890</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bottom Copyright -->
+            <div class="pt-8 text-center text-[11px] text-rose-400/60 flex flex-col sm:flex-row justify-between items-center gap-2">
+                <p>&copy; 2026 TR Bouquet UMKM. All Rights Reserved.</p>
+                <p>Designed for Creative Local Business</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- MODAL DETAIL PRODUK -->
+    <div id="productModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden">
+        <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-rose-100 relative animate-fade-in">
+            <button onclick="closeProductModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-cream text-charcoal hover:bg-rose-100 flex items-center justify-center z-10 font-bold transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="modalContent" class="p-6 sm:p-8">
+                <!-- Dynamic Content Loaded from JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL KERANJANG BELANJA / FLOATING CART -->
+    <div id="cartModal" class="fixed inset-0 z-50 flex items-center justify-end bg-black/50 backdrop-blur-sm hidden">
+        <div class="bg-white w-full max-w-md h-full shadow-2xl flex flex-col justify-between animate-slide-left">
+            <!-- Cart Header -->
+            <div class="p-6 border-b border-rose-100 flex items-center justify-between bg-rose-50/50">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-shopping-bag text-rose-500 text-xl"></i>
+                    <h3 class="font-playfair font-bold text-xl text-rose-950">Keranjang Belanja</h3>
+                </div>
+                <button onclick="closeCartModal()" class="w-8 h-8 rounded-full bg-white text-charcoal hover:bg-rose-100 flex items-center justify-center font-bold shadow-sm">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Cart Items List -->
+            <div id="cartItemsList" class="p-6 overflow-y-auto flex-1 space-y-4">
+                <!-- Empty Cart State or Dynamic Items -->
+            </div>
+
+            <!-- Cart Footer Summary -->
+            <div class="p-6 border-t border-rose-100 bg-cream/50 space-y-4">
+                <div class="space-y-2 text-xs">
+                    <div class="flex justify-between text-charcoal/70">
+                        <span>Total Item:</span>
+                        <span id="cartTotalItems" class="font-bold text-charcoal">0 Item</span>
+                    </div>
+                    <div class="flex justify-between items-center pt-2 border-t border-rose-200">
+                        <span class="text-sm font-bold text-rose-950">Total Pembayaran:</span>
+                        <span id="cartTotalPrice" class="font-playfair text-2xl font-bold text-rose-600">Rp 0</span>
+                    </div>
+                </div>
+                <button onclick="checkoutCartToWhatsApp()" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-md transition-all flex items-center justify-center gap-2 text-sm">
+                    <i class="fa-brands fa-whatsapp text-xl"></i> Checkout via WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // DATA PRODUK KATALOG
+        const products = [
+            {
+                id: 1,
+                name: "Scarlet Rose Premium",
+                category: "fresh",
+                price: 185000,
+                rating: 4.9,
+                reviews: 42,
+                image: "https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=600&q=80",
+                badge: "Best Seller",
+                badgeColor: "bg-rose-500",
+                description: "Rangkaian mawar merah segar pilihan (10 tangkai) dipadukan dengan baby breath dan wrapping kertas tahan air nuansa soft pink & gold."
+            },
+            {
+                id: 2,
+                name: "Eternal Dried Flower Warm Accent",
+                category: "artificial",
+                price: 135000,
+                rating: 4.8,
+                reviews: 28,
+                image: "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=600&q=80",
+                badge: "Tahan Lama",
+                badgeColor: "bg-amber-500",
+                description: "Bouquet bunga kering abadi (dried flowers) gabungan pampas, edelweiss cultivation, & cotton flower. Awet bertahun-tahun tanpa disiram."
+            },
+            {
+                id: 3,
+                name: "Luxury Money Bouquet (Rp 500k Sheet)",
+                category: "money",
+                price: 95000, // Harga jasa
+                rating: 5.0,
+                reviews: 56,
+                image: "https://images.unsplash.com/photo-1580519542036-c47de6196ba5?auto=format&fit=crop&w=600&q=80",
+                badge: "Favorit Wisuda",
+                badgeColor: "bg-purple-500",
+                description: "Bouquet uang kertas rapi dipadu bunga artificial. *Harga tertera adalah biaya jasa wrapping & hiasan. Nominal uang ditambahkan sesuai request."
+            },
+            {
+                id: 4,
+                name: "Choco Crunch Snack Bouquet",
+                category: "snack",
+                price: 85000,
+                rating: 4.7,
+                reviews: 35,
+                image: "https://images.unsplash.com/photo-1582293041079-7814c2f12063?auto=format&fit=crop&w=600&q=80",
+                badge: "Murah Meriah",
+                badgeColor: "bg-blue-500",
+                description: "Kombinasi berbagai snack coklat pilihan favorit (Silverqueen, Pocky, Oreo) dirangkai cantik dengan ribbon pita satin premium."
+            },
+            {
+                id: 5,
+                name: "Graduation Teddy Gift Box",
+                category: "giftbox",
+                price: 165000,
+                rating: 4.9,
+                reviews: 49,
+                image: "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=600&q=80",
+                badge: "Hot Deal",
+                badgeColor: "bg-rose-500",
+                description: "Gift Box eksklusif berisi boneka wisuda, mini bouquet dried flower, kartu ucapan custom, dan lampu LED hias yang aesthetic."
+            },
+            {
+                id: 6,
+                name: "White Lily & Rose Grace",
+                category: "fresh",
+                price: 210000,
+                rating: 5.0,
+                reviews: 19,
+                image: "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=600&q=80",
+                badge: "Eksklusif",
+                badgeColor: "bg-emerald-500",
+                description: "Bunga Lily putih harum dikombinasikan dengan mawar putih murni. Memberikan kesan elegan, suci, dan sangat mewah."
+            }
+        ];
+
+        // GLOBAL CARTS STATE
+        let cart = [];
+
+        // CUSTOM BUILDER STATE
+        let builderState = {
+            type: '',
+            typePrice: 0,
+            color: '',
+            colorPrice: 0,
+            addons: [], // array of { name, price }
+            greeting: ''
+        };
+
+        // RENDER PRODUCTS GRID
+        function renderProducts(category = 'all') {
+            const grid = document.getElementById('productGrid');
+            grid.innerHTML = '';
+
+            const filtered = category === 'all' 
+                ? products 
+                : products.filter(p => p.category === category);
+
+            filtered.forEach(p => {
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-2xl overflow-hidden border border-rose-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group";
+                card.innerHTML = `
+                    <div class="relative overflow-hidden aspect-[4/3]">
+                        <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 ${p.badgeColor} text-white text-[10px] font-bold px-2.5 py-1 rounded-full shadow">
+                            ${p.badge}
+                        </span>
+                        <button onclick="openProductModal(${p.id})" class="absolute bottom-3 right-3 bg-white/90 hover:bg-rose-500 hover:text-white text-charcoal p-2.5 rounded-full shadow transition-all">
+                            <i class="fa-solid fa-eye text-xs"></i>
+                        </button>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <div class="flex items-center gap-1 text-amber-400 text-xs mb-1">
+                                <i class="fa-solid fa-star"></i>
+                                <span class="font-bold text-charcoal ml-1">${p.rating}</span>
+                                <span class="text-charcoal/50">(${p.reviews})</span>
+                            </div>
+                            <h3 class="font-bold text-rose-950 text-base line-clamp-1 group-hover:text-rose-500 transition-colors">${p.name}</h3>
+                            <p class="text-xs text-charcoal/60 line-clamp-2 mt-1 leading-relaxed">${p.description}</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-2 border-t border-rose-50">
+                            <div>
+                                <span class="text-[10px] text-charcoal/50 block">Harga</span>
+                                <span class="font-playfair font-bold text-lg text-rose-600">Rp ${p.price.toLocaleString('id-ID')}</span>
+                            </div>
+                            <button onclick="addToCart(${p.id})" class="px-3.5 py-2 bg-rose-100 hover:bg-rose-500 text-rose-700 hover:text-white font-semibold text-xs rounded-xl transition-all flex items-center gap-1.5">
+                                <i class="fa-solid fa-cart-plus"></i>
+                                <span>+ Keranjang</span>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // FILTER BUTTON CLICK HANDLER
+        function filterProducts(cat) {
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => {
+                if (btn.dataset.category === cat) {
+                    btn.className = "filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all whitespace-nowrap bg-rose-500 text-white shadow-md";
+                } else {
+                    btn.className = "filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all whitespace-nowrap bg-white text-charcoal/80 hover:bg-rose-100 border border-rose-100";
+                }
+            });
+            renderProducts(cat);
+        }
+
+        // MODAL PRODUCT DETAILS
+        function openProductModal(id) {
+            const product = products.find(p => p.id === id);
+            if (!product) return;
+
+            const modalContent = document.getElementById('modalContent');
+            modalContent.innerHTML = `
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                    <div class="rounded-2xl overflow-hidden aspect-square border border-rose-100">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover">
+                    </div>
+                    <div class="space-y-4">
+                        <span class="${product.badgeColor} text-white text-xs font-bold px-3 py-1 rounded-full inline-block">
+                            ${product.badge}
+                        </span>
+                        <h3 class="font-playfair text-2xl font-bold text-rose-950">${product.name}</h3>
+                        <div class="flex items-center gap-2 text-xs text-amber-400">
+                            <i class="fa-solid fa-star"></i>
+                            <span class="font-bold text-charcoal">${product.rating}</span>
+                            <span class="text-charcoal/50">(${product.reviews} ulasan pembeli)</span>
+                        </div>
+                        <p class="text-xs text-charcoal/70 leading-relaxed">${product.description}</p>
+                        <div class="p-3 bg-cream rounded-xl text-xs space-y-1">
+                            <p class="font-bold text-rose-900">Spesifikasi Standard:</p>
+                            <p class="text-charcoal/70">• Kertas Wrapping Premium Tahan Air</p>
+                            <p class="text-charcoal/70">• Pita Satin Elegan & Free Gift Card</p>
+                        </div>
+                        <div class="text-2xl font-playfair font-bold text-rose-600">
+                            Rp ${product.price.toLocaleString('id-ID')}
+                        </div>
+                        <div class="flex gap-3 pt-2">
+                            <button onclick="addToCart(${product.id}); closeProductModal();" class="flex-1 py-3 bg-rose-500 hover:bg-rose-600 text-white font-bold rounded-xl text-xs shadow transition-all flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-cart-plus"></i> Tambah Keranjang
+                            </button>
+                            <a href="https://wa.me/6281234567890?text=Halo%20TR%20Bouquet,%20saya%20tertarik%20dengan%20produk%20${encodeURIComponent(product.name)}" target="_blank" class="py-3 px-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-xs shadow transition-all flex items-center justify-center gap-1.5">
+                                <i class="fa-brands fa-whatsapp text-base"></i> Tanya WA
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('productModal').classList.remove('hidden');
+        }
+
+        function closeProductModal() {
+            document.getElementById('productModal').classList.add('hidden');
+        }
+
+        // CART LOGIC
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const existing = cart.find(item => item.id === productId);
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({ ...product, qty: 1 });
+            }
+
+            updateCartUI();
+            openCartModal();
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartUI();
+        }
+
+        function updateCartQty(productId, delta) {
+            const item = cart.find(i => i.id === productId);
+            if (item) {
+                item.qty += delta;
+                if (item.qty <= 0) {
+                    removeFromCart(productId);
+                } else {
+                    updateCartUI();
+                }
+            }
+        }
+
+        function updateCartUI() {
+            const cartCount = document.getElementById('cartCount');
+            const cartList = document.getElementById('cartItemsList');
+            const totalItemsEl = document.getElementById('cartTotalItems');
+            const totalPriceEl = document.getElementById('cartTotalPrice');
+
+            const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+            cartCount.textContent = totalQty;
+            totalItemsEl.textContent = `${totalQty} Item`;
+            totalPriceEl.textContent = `Rp ${totalPrice.toLocaleString('id-ID')}`;
+
+            if (cart.length === 0) {
+                cartList.innerHTML = `
+                    <div class="text-center py-12 text-charcoal/50">
+                        <i class="fa-solid fa-basket-shopping text-4xl mb-3 text-rose-200"></i>
+                        <p class="text-sm">Keranjang belanja Anda masih kosong.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            cartList.innerHTML = '';
+            cart.forEach(item => {
+                const itemEl = document.createElement('div');
+                itemEl.className = "flex items-center gap-3 p-3 bg-cream/60 rounded-xl border border-rose-100";
+                itemEl.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" class="w-14 h-14 rounded-lg object-cover">
+                    <div class="flex-1 min-w-0">
+                        <h4 class="font-bold text-xs text-rose-950 truncate">${item.name}</h4>
+                        <div class="text-xs font-bold text-rose-600 mt-0.5">Rp ${item.price.toLocaleString('id-ID')}</div>
+                        <div class="flex items-center gap-2 mt-2">
+                            <button onclick="updateCartQty(${item.id}, -1)" class="w-5 h-5 rounded bg-white text-charcoal flex items-center justify-center text-xs font-bold border border-rose-200 hover:bg-rose-100">-</button>
+                            <span class="text-xs font-bold">${item.qty}</span>
+                            <button onclick="updateCartQty(${item.id}, 1)" class="w-5 h-5 rounded bg-white text-charcoal flex items-center justify-center text-xs font-bold border border-rose-200 hover:bg-rose-100">+</button>
+                        </div>
+                    </div>
+                    <button onclick="removeFromCart(${item.id})" class="text-rose-400 hover:text-rose-600 p-2 text-xs">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                `;
+                cartList.appendChild(itemEl);
+            });
+        }
+
+        function openCartModal() {
+            document.getElementById('cartModal').classList.remove('hidden');
+        }
+
+        function closeCartModal() {
+            document.getElementById('cartModal').classList.add('hidden');
+        }
+
+        // CHECKOUT CART VIA WA
+        function checkoutCartToWhatsApp() {
+            if (cart.length === 0) {
+                alert('Keranjang belanja masih kosong!');
+                return;
+            }
+
+            let text = "Halo *TR Bouquet*, saya ingin memesan item berikut:\n\n";
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                const subtotal = item.price * item.qty;
+                total += subtotal;
+                text += `${index + 1}. *${item.name}* (x${item.qty}) - Rp ${subtotal.toLocaleString('id-ID')}\n`;
+            });
+
+            text += `\n*Total Pembayaran: Rp ${total.toLocaleString('id-ID')}*`;
+            text += `\n\nMohon konfirmasi ketersediaan stok & biaya pengiriman. Terima kasih!`;
+
+            const waUrl = `https://wa.me/6281234567890?text=${encodeURIComponent(text)}`;
+            window.open(waUrl, '_blank');
+        }
+
+        // CUSTOM BUILDER LOGIC
+        function selectBuilderOption(category, value, price) {
+            if (category === 'type') {
+                builderState.type = value;
+                builderState.typePrice = price;
+                document.querySelectorAll('.builder-type-btn').forEach(btn => {
+                    if (btn.dataset.value === value) {
+                        btn.classList.add('border-rose-500', 'bg-rose-50');
+                    } else {
+                        btn.classList.remove('border-rose-500', 'bg-rose-50');
+                    }
+                });
+            } else if (category === 'color') {
+                builderState.color = value;
+                builderState.colorPrice = price;
+            }
+            updateBuilderSummary();
+        }
+
+        function toggleAddon(name, price, isChecked) {
+            if (isChecked) {
+                builderState.addons.push({ name, price });
+            } else {
+                builderState.addons = builderState.addons.filter(a => a.name !== name);
+            }
+            updateBuilderSummary();
+        }
+
+        function updateBuilderSummary() {
+            document.getElementById('summaryType').textContent = builderState.type || 'Belum dipilih';
+            document.getElementById('summaryColor').textContent = builderState.color || 'Belum dipilih';
+
+            const addonsList = document.getElementById('summaryAddons');
+            if (builderState.addons.length === 0) {
+                addonsList.innerHTML = '<li class="italic text-charcoal/50">Tidak ada</li>';
+            } else {
+                addonsList.innerHTML = builderState.addons.map(a => `<li>${a.name} (+Rp ${a.price.toLocaleString('id-ID')})</li>`).join('');
+            }
+
+            const addonsTotal = builderState.addons.reduce((sum, a) => sum + a.price, 0);
+            const total = builderState.typePrice + builderState.colorPrice + addonsTotal;
+            document.getElementById('summaryTotal').textContent = `Rp ${total.toLocaleString('id-ID')}`;
+        }
+
+        function sendCustomToWhatsApp() {
+            if (!builderState.type) {
+                alert('Pilih jenis bouquet terlebih dahulu!');
+                return;
+            }
+
+            const greetingMsg = document.getElementById('builderGreeting').value || '-';
+            const addonsTotal = builderState.addons.reduce((sum, a) => sum + a.price, 0);
+            const total = builderState.typePrice + builderState.colorPrice + addonsTotal;
+
+            let text = `Halo *TR Bouquet*, saya ingin pesan *CUSTOM BOUQUET* dengan detail:\n\n`;
+            text += `• *Jenis Bouquet:* ${builderState.type}\n`;
+            text += `• *Nuansa Warna:* ${builderState.color || 'Bebas / Rekomendasi'}\n`;
+            text += `• *Aksesoris Tambahan:* ${builderState.addons.map(a => a.name).join(', ') || 'Tidak Ada'}\n`;
+            text += `• *Kartu Ucapan:* "${greetingMsg}"\n\n`;
+            text += `*Estimasi Total: Rp ${total.toLocaleString('id-ID')}*\n\n`;
+            text += `Mohon info lanjut untuk ketersediaan & pembayaran.`;
+
+            const waUrl = `https://wa.me/6281234567890?text=${encodeURIComponent(text)}`;
+            window.open(waUrl, '_blank');
+        }
+
+        // MOBILE MENU TOGGLE
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // INITIALIZE ON LOAD
+        window.onload = function() {
+            renderProducts('all');
+            updateCartUI();
+        };
+    </script>
+</body>
+</html>
